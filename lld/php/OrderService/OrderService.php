@@ -65,6 +65,8 @@ Class OrderService implements OrderServiceInterface {
     }
 
     /**
+     * @param int $orderId
+     * 
      * @return string
      */
     public function getState($orderId): string {
