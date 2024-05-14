@@ -1,6 +1,5 @@
 <?php
 
-use OrderServiceFactory;
 use Services\FSM;
 use Services\FSMInterface;
 
@@ -45,6 +44,7 @@ Class OrderService implements OrderServiceInterface {
     public function changeState(int $orderId, string $status, string $event): bool {
         try {
             $fsa = $this->createState($orderId);
+
             $fsa->changeState($orderId, $status, $event);
         } catch (\Exception $e) {
             # Log Exception $e->getMessage()
