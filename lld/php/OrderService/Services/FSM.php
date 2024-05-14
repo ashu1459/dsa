@@ -48,10 +48,21 @@ Class FSM implements FSMInterface {
      * @return array
      */
     private function getOrderDetails(): array {
+        # get random status
+        $allStatuses = Status\StatusConstants::getAllStatuses();
+        $randStatusKey = array_rand($allStatuses);
+        
+        # get random event
+        $allEvents = Events\EventsConstants::getAllEvents();
+        $randEventKey = array_rand($allEvents);
+
+        # get random order ID
+        $orderId = rand();
+
         return [
-            'order_id' => 1,
-            'status' => $this->status->getText('IN_TRANSIT'),
-            'events' => $this->events->getText('PAYMENT_RECEIVED'),
+            'order_id' => $orderId,
+            'status' => $this->status->getText($allStatuses[$randStatusKey]),
+            'events' => $this->events->getText($allEvents[$randEventKey]),
         ];
     }
     
